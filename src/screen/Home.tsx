@@ -3,6 +3,9 @@ import UNTLogo from "../assets/UNTLogo.png";
 import dartmouthhealth from "../assets/dartmouthhealth.png";
 import lme from "../assets/lme.jpg";
 import HPE from "../assets/HPE.jpg";
+import NASA from "../assets/nasa.jpg";
+import MIT from "../assets/MIT.jpg";
+
 import { Link } from "@nextui-org/react";
 function Home() {
   return (
@@ -85,26 +88,51 @@ function Home() {
                 </p>
               </div>
               <div className="lg:col-span-5 lg:flex lg:items-start">
-                <div className="">
+                <div className="flex space-x-2 mt-4">
                   <Link
-                    isExternal
                     href="https://github.com/panavmhatre"
-                    showAnchorIcon
-                    size="lg"
-                    className="mt-4 flex"
-                    color="foreground"
+                    type="button"
+                    className="w-36 h-12 text-stone-700 bg-gray-200 font-medium rounded-lg text-sm px-5 text-center flex items-center justify-center transition-all"
                   >
-                    Follow on Github
+                    Github
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="#404040"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="ml-2"
+                    >
+                      <line x1="7" y1="17" x2="17" y2="7" />
+                      <polyline points="7 7 17 7 17 17" />
+                    </svg>
                   </Link>
+
                   <Link
-                    isExternal
                     href="https://www.linkedin.com/in/panav-m-70982b243/"
-                    showAnchorIcon
-                    size="lg"
-                    className="mt-4 flex"
-                    color="foreground"
+                    type="button"
+                    className="w-36 h-12 text-stone-700 bg-gray-200 font-medium rounded-lg text-sm px-5 text-center flex items-center justify-center transition-all"
                   >
-                    Follow on LinkedIn
+                    LinkedIn
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="#404040"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="ml-2"
+                    >
+                      <line x1="7" y1="17" x2="17" y2="7" />
+                      <polyline points="7 7 17 7 17 17" />
+                    </svg>
                   </Link>
                 </div>
               </div>
@@ -198,28 +226,50 @@ function Home() {
                         </div>
                       </div>
                     </li>
-                    {/* <li className="pt-3 pb-0 sm:pt-4">
-            <div className="flex items-center space-x-4 rtl:space-x-reverse">
-              <div className="flex-shrink-0">
-                <img
-                  className="w-8 h-8 rounded-full"
-                  src="/docs/images/people/profile-picture-4.jpg"
-                  alt="Neil image"
-                />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                  Lana Byrd
-                </p>
-                <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                  email@flowbite.com
-                </p>
-              </div>
-              <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                $367
-              </div>
-            </div>
-          </li> */}
+                    <li className="py-3 sm:py-4">
+                      <div className="flex items-center space-x-4 rtl:space-x-reverse">
+                        <div className="flex-shrink-0">
+                          <img
+                            className="w-12 h-12 rounded-full"
+                            src={NASA}
+                            alt="NASA"
+                          />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
+                            NASA
+                          </p>
+                          <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                            High School Intern
+                          </p>
+                        </div>
+                        <div className="inline-flex text-sm items-center text-base text-gray-900 dark:text-white">
+                          09/2023 - 04/2024
+                        </div>
+                      </div>
+                    </li>
+                    <li className="py-3 sm:py-4">
+                      <div className="flex items-center space-x-4 rtl:space-x-reverse">
+                        <div className="flex-shrink-0">
+                          <img
+                            className="w-12 h-12 rounded-full"
+                            src={MIT}
+                            alt="MIT"
+                          />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
+                            MIT
+                          </p>
+                          <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                            Researcher
+                          </p>
+                        </div>
+                        <div className="inline-flex text-sm items-center text-base text-gray-900 dark:text-white">
+                          07/2023 - 08/2024
+                        </div>
+                      </div>
+                    </li>
                   </ul>
                 </div>
               </div>
