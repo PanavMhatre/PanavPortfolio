@@ -5,13 +5,16 @@ import lme from "../assets/lme.jpg";
 import HPE from "../assets/HPE.jpg";
 import NASA from "../assets/nasa.jpg";
 import MIT from "../assets/MIT.jpg";
+import EarthDefender from "../assets/EarthDefenders.png";
+import LearnX from "../assets/LearnX.png";
+import RedCross from "../assets/redalert.png";
+import GoFit from "../assets/GoFit.png";
 
 import { Link } from "@nextui-org/react";
 function Home() {
   return (
-    <div className="bg-white w-full pl-72 pr-72 relative">
-      {/* <NavBar></NavBar> */}
-      <div className="portfolio-container animate-fade-up ml-[150px] relative pr-[240px] pt-20">
+    <div className="bg-white w-full min-h-screen flex flex-col items-center justify-start px-24">
+      <div className="w-full max-w-screen-xl pt-20 animate-fade-up">
         <section className="bg-white text-left">
           <div
             className="max-w-screen-xl w-full relative mb-20"
@@ -21,11 +24,11 @@ function Home() {
               alignItems: "center",
             }}
           >
-            <div className="place-self-center lg:col-span-7">
+            <div className="place-self-center lg:col-span-7 ml-[150px] pr-[240px]">
               <h1 className="mb-4 text-3xl font-extrabold text-black">
                 Hi, this is Panav 👋
               </h1>
-              <p className="max-w-2xl mb-6 font-light text-black">
+              <p className="max-w-2xl mb-6 font-light text-gray-600">
                 I have a strong enthusiasm for creating innovative algorithms
                 and programs, driven by a deep passion for the fields of AI,
                 Robotics, and Computer Science.
@@ -51,7 +54,6 @@ function Home() {
             />
           </div>
         </section>
-        {/* <Footer></Footer> */}
       </div>
       <div className="w-full bg-white">
         <div
@@ -149,7 +151,7 @@ function Home() {
           }}
         >
           <section className="bg-white animate-fade-up">
-            <div className="grid max-w-screen-xl ml-[150px] pr-[240px] mb-20">
+            <div className="grid max-w-screen-xl ml-[150px] pr-[240px]">
               <div className="lg:col-span-7">
                 <h1 className="text-left text-black mb-4 text-3xl font-extrabold">
                   Experience
@@ -157,8 +159,10 @@ function Home() {
                 <div className="max-w-2xl mb-6 font-light text-gray-500 ">
                   <a className="" style={{ lineHeight: "1.5" }}>
                     I specialize in Python, Java, Machine Learning, and Data
-                    Science. But I am always learning new things. Here are some
-                    of the places I have worked.
+                    Science, and I'm always learning new things to stay on the
+                    cutting edge of technology. I've had the opportunity to work
+                    and intern at a range of institutions and companies that
+                    have strengthened my technical foundation. 
                   </a>
                   <ul className=" mx-auto mt-10 max-w-lg divide-y divide-gray-200 dark:divide-gray-700 mb-20 animate-fade-up">
                     <li className="py-3 sm:py-4">
@@ -277,13 +281,85 @@ function Home() {
           </section>
         </div>
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "left",
-        }}
-      ></div>
+      <div className="w-full bg-white mb-20">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <section className="bg-white animate-fade-up">
+            <div className="grid max-w-screen-xl ml-[150px] pr-[240px]">
+              <div className="lg:col-span-7">
+                <h1 className="text-left text-black mb-4 text-3xl font-extrabold">
+                  Projects
+                </h1>
+                <div className="max-w-2xl mb-6 font-light text-gray-500 ">
+                  <a className="" style={{ lineHeight: "1.5" }}>
+                  I have practically used my coding skills in order to help solve problems around the world. Here are some of my projects I have worked on to showcase my technical abilities.
+
+                  </a>
+                  <div className="px-6 mt-20">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                      {[
+                        {
+                          title: "GoFit",
+                          description:
+                            "Open source mobile app built with Java to help students get fit.",
+                          img: GoFit,
+                          alt: "GoFit",
+                        },
+                        {
+                          title: "Red Alert",
+                          description:
+                            "A real-time visualization tool that helps vulnerable populations be safe from natural disasters.",
+                          img: RedCross,
+                          alt: "Climate Tracker",
+                        },
+                        {
+                          title: "LearnX",
+                          description:
+                            "Platform for rural students to access curated learning paths with interactive coding challenges.",
+                          img: LearnX,
+                          alt: "LearnX",
+                        },
+                        {
+                          title: "EarthDefenders",
+                          description:
+                            "Mobile app that gamifies climate action and educates users on sustainability through quizzes and AR.",
+                          img: EarthDefender,
+                          alt: "EarthDefenders",
+                        },
+                      ].map((card, index) => (
+                        <div
+                          key={index}
+                          className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col h-[330px]"
+                        >
+                          <img
+                            src={card.img}
+                            alt={card.alt}
+                            className="w-full h-48 object-cover rounded-t-xl"
+                          />
+                          <div className="p-5 flex-1 flex flex-col">
+                            <h2 className="text-xl text-black font-bold mb-2">
+                              {card.title}
+                            </h2>
+                            <p className="text-gray-600 text-sm">
+                              {card.description}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          
+        </div>
+      </div>
     </div>
   );
 }
