@@ -7,8 +7,17 @@ import convergentLogo from "../assets/logos/txconvergent.png";
 import senateLogo from "../assets/logos/senate.png";
 import ribbonLogo from "../assets/logos/ribbon.svg";
 
+interface ResumeItem {
+  title: string;
+  description: string;
+  date: string;
+  logo: string;
+  logoBg: string;
+  logoImage?: string;
+}
+
 function Resume() {
-  const experiences = [
+  const experiences: { year: number; items: ResumeItem[] }[] = [
     {
       year: 2026,
       items: [
@@ -85,7 +94,7 @@ function Resume() {
     },
   ];
 
-  const awards = [
+  const awards: ResumeItem[] = [
     {
       title: "Apple Swift Student Challenge Winner",
       description: "Built a climate change education app using Swift",
