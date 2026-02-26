@@ -1,21 +1,23 @@
-import {  Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "./screen/Home";
-import About from "./screen/About";
-import Portfolio from "./screen/Portfolio";
-import Blog from "./screen/Blog";
+import Resume from "./screen/Resume";
 import Projects from "./screen/Projects";
+import Blog from "./screen/Blog";
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-      <div className="bg-white">
-        <Routes>
-        <Route path="/" element = {<Home />} />
-        <Route path="/about/" element= {<About />}/> 
-        <Route path="/portfolio/" element = {<Portfolio />}/> 
-        <Route path="/blog/" element = {<Blog />}/> 
-        <Route path="/projects/" element = {<Projects />}/> 
+    <div className="min-h-screen bg-white dark:bg-[#1a1a1a] transition-colors">
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/resume/" element={<Resume />} />
+        <Route path="/projects/" element={<Projects />} />
+        <Route path="/blog/" element={<Blog />} />
       </Routes>
-      </div>
+      <Footer />
+    </div>
   );
 }
 

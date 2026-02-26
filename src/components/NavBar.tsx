@@ -1,106 +1,74 @@
-import { useLocation } from "react-router-dom";
-import Panav from "../assets/PanavSquare.png";
+import { Link, useLocation } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext";
 
 function NavBar() {
-
   const location = useLocation();
+  const { theme, toggleTheme } = useTheme();
+
+  const links = [
+    { path: "/", label: "Home" },
+    { path: "/resume/", label: "Resume" },
+    { path: "/projects/", label: "Projects" },
+    { path: "/blog/", label: "Blog" },
+  ];
+
   return (
-    <div className=" pt-5 mb-5 mx-auto max-w-7xl bg-white pl-[400px] pr-72">
-      <nav className="bg-white">
-        <div className="px-8">
-          <div className="flex items-center justify-between h-16 ">
-            <div className="w-full justify-between flex items-center" >
-              <div className="avatar ">
-                <div className="w-10 h-10 rounded-full ml-25" >
-                  <a href="/"><img src={Panav}  /></a>
-                </div>
-              </div>
-              <div className="hidden md:block mr-10">
-                <div className="flex items-baseline ml-10 space-x-4">
-                <a
-              className={`text-gray-300 hover:text-gray-800  px-1 py-2 rounded-md text-md font-medium ${
-                location.pathname === "/about/" ? "text-gray-800 " : ""
+    <nav className="w-full max-w-3xl mx-auto px-6 pt-8 pb-0">
+      <div className="flex items-center justify-end space-x-6">
+        {links.map((link) => {
+          const isActive = location.pathname === link.path;
+          return (
+            <Link
+              key={link.path}
+              className={`relative text-sm font-medium transition-colors pb-3 ${
+                isActive
+                  ? "text-black dark:text-white"
+                  : "text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
               }`}
-              href="/about/"
+              to={link.path}
             >
-              About
-            </a>
-            <a
-              className={`text-gray-300 hover:text-gray-800 dark:hover:text-white px-1 py-2 rounded-md text-md font-medium ${
-                location.pathname === "/projects/" ? "text-gray-800 dark:text-white" : ""
-              }`}
-              href="/projects/"
+              {link.label}
+              {isActive && (
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-[2px] bg-gray-400 dark:bg-gray-500 rounded-full" />
+              )}
+            </Link>
+          );
+        })}
+        <button
+          onClick={toggleTheme}
+          className="text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 transition-colors pb-3"
+          aria-label="Toggle theme"
+        >
+          {theme === "dark" ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              Projects
-            </a>
-            <a
-              className={`text-gray-300 hover:text-gray-800 dark:hover:text-white px-1 py-2 rounded-md text-md font-medium ${
-                location.pathname === "/blog/" ? "text-gray-800 dark:text-white" : ""
-              }`}
-              href="/blog/"
+              <circle cx="12" cy="12" r="5" />
+              <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 20 20"
+              fill="currentColor"
             >
-              Blog
-            </a>
-            <a
-              className={`text-gray-300 hover:text-gray-800 dark:hover:text-white px-1 py-2 rounded-md text-md font-medium ${
-                location.pathname === "/portfolio/" ? "text-gray-800 dark:text-white" : ""
-              }`}
-              href="/portfolio/"
-            >
-              Portfolio
-            </a>
-                </div>
-              </div>
-            </div>
-            <div className="block">
-              <div className="flex items-center ml-4 md:ml-6"></div>
-            </div>
-            <div className="flex -mr-2 md:hidden">
-              <button className="text-gray-800 dark:text-white hover:text-gray-300 inline-flex items-center justify-center p-2 rounded-md focus:outline-none">
-                <svg
-                  width="20"
-                  height="20"
-                  fill="currentColor"
-                  className="w-8 h-8"
-                  viewBox="0 0 1792 1792"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M1664 1344v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45z"></path>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a
-              className="text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-              href="/#"
-            >
-              Home
-            </a>
-            <a
-              className="text-gray-800 dark:text-white block px-3 py-2 rounded-md text-base font-medium"
-              href="/#"
-            >
-              Gallery
-            </a>
-            <a
-              className="text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-              href="/#"
-            >
-              Content
-            </a>
-            <a
-              className="text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-              href="/#"
-            >
-              Contact
-            </a>
-          </div>
-        </div>
-      </nav>
-    </div>
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+            </svg>
+          )}
+        </button>
+      </div>
+      <hr className="border-gray-200 dark:border-gray-700/50" />
+    </nav>
   );
 }
 

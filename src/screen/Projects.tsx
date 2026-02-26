@@ -1,180 +1,98 @@
-import NavBar from "../components/NavBar";
-import goFit from "../assets/GoFit.png";
-import Footer from "../components/Footer";
-import learnX from "../assets/LearnX.png";
-
 function Projects() {
+  const projects = [
+    {
+      title: "GoFit",
+      description: "Open source mobile app built with Java to help students get fit.",
+      tags: ["React", "TypeScript", "Tailwind"],
+    },
+    {
+      title: "Red Alert",
+      description: "A real-time visualization tool that helps vulnerable populations be safe from natural disasters.",
+      tags: ["React", "JavaScript", "Maps API"],
+    },
+    {
+      title: "LearnX",
+      description: "Platform for rural students to access curated learning paths with interactive coding challenges.",
+      tags: ["React", "JavaScript", "NextUI"],
+    },
+    {
+      title: "EarthDefenders",
+      description: "Mobile app that gamifies climate action and educates users on sustainability through quizzes and AR.",
+      tags: ["Swift", "SwiftUI", "ARKit"],
+    },
+  ];
+
+  const research = [
+    {
+      title: "TextShield",
+      description: "AI-powered text classification and content moderation system using deep learning.",
+      tags: ["AI/ML", "Python", "TensorFlow"],
+    },
+  ];
+
   return (
-    <div>
-    <NavBar />
-    <div className="bg-white pl-72 pr-72 mt-20">
-      <h1
-        className={`max-w-2xl mb-4 text-4xl font-extrabold text-black  md:text-5xl xl:text-6xl ml-52 animate-fade-up`}
-      >
-        Projects
-      </h1>
-      <div className="flex justify-center animate-fade-up">
-        <div className="w-full max-w-screen-lg mt-10">
-          <div className="card bg-base-200 shadow-xl flex-row">
-            <figure className="inline flex p-5 w-60 pr-0">
-              <img src={goFit} alt="Shoes" className="rounded-xl" />
-            </figure>
-            <div className="card-body">
-              <div className="flex items-center mb-2">
-                <h1 className="mr-5 text-2xl font-bold">GoFit</h1>
-                <div className="relative grid select-none items-center whitespace-nowrap rounded-lg bg-gray-900 py-1.5 px-3 font-sans text-xs font-bold uppercase text-white mr-2">
-                  <span className="">Web Design</span>
-                </div>
-                <div className="relative grid select-none items-center whitespace-nowrap rounded-lg bg-gray-900 py-1.5 px-3 font-sans text-xs font-bold uppercase text-white mr-2">
-                  <span className="">React</span>
-                </div>
-                <div className="relative grid select-none items-center whitespace-nowrap rounded-lg bg-gray-900 py-1.5 px-3 font-sans text-xs font-bold uppercase text-white mr-2">
-                  <span className="">Typescript</span>
-                </div>
-                <div className="relative grid select-none items-center whitespace-nowrap rounded-lg bg-gray-900 py-1.5 px-3 font-sans text-xs font-bold uppercase text-white">
-                  <span className="">Tailwind</span>
-                </div>
-              </div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse bibendum. Nunc non posuere consectetur, justo erat
-                semper enim, non hendrerit dui odio id enim.
+    <div className="w-full max-w-3xl mx-auto px-6 animate-fade-up">
+      <section className="pt-16 pb-10">
+        <h1 className="text-xl font-bold text-black dark:text-white mb-8">
+          Projects
+        </h1>
+        {projects.map((project, index) => (
+          <div key={index}>
+            <div className="py-5">
+              <h3 className="text-black dark:text-white font-semibold text-base">
+                {project.title}
+              </h3>
+              <p className="text-gray-500 dark:text-gray-500 text-sm mt-1">
+                {project.description}
               </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="flex justify-center animate-fade-up">
-        <div className="w-full max-w-screen-lg mt-10">
-          <div className="card bg-base-200 shadow-xl flex-row">
-            <figure className="inline flex p-5 w-60 pr-0">
-              <img src={learnX} alt="Shoes" className="rounded-xl" />
-            </figure>
-            <div className="card-body">
-              <div className="flex items-center mb-2">
-                <h1 className="mr-5 text-2xl font-bold">LearnX</h1>
-                <div className="relative grid select-none items-center whitespace-nowrap rounded-lg bg-gray-900 py-1.5 px-3 font-sans text-xs font-bold uppercase text-white mr-2">
-                  <span className="">Web Design</span>
-                </div>
-                <div className="relative grid select-none items-center whitespace-nowrap rounded-lg bg-gray-900 py-1.5 px-3 font-sans text-xs font-bold uppercase text-white mr-2">
-                  <span className="">React</span>
-                </div>
-                <div className="relative grid select-none items-center whitespace-nowrap rounded-lg bg-gray-900 py-1.5 px-3 font-sans text-xs font-bold uppercase text-white mr-2">
-                  <span className="">Javascript</span>
-                </div>
-                <div className="relative grid select-none items-center whitespace-nowrap rounded-lg bg-gray-900 py-1.5 px-3 font-sans text-xs font-bold uppercase text-white">
-                  <span className="">NextUI</span>
-                </div>
+              <div className="flex flex-wrap gap-2 mt-3">
+                {project.tags.map((tag, tagIndex) => (
+                  <span
+                    key={tagIndex}
+                    className="text-xs px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse bibendum. Nunc non posuere consectetur, justo erat
-                semper enim, non hendrerit dui odio id enim.
-              </p>
             </div>
+            {index < projects.length - 1 && (
+              <hr className="border-gray-200 dark:border-gray-700/50" />
+            )}
           </div>
-        </div>
-      </div>
-      <div className="flex justify-center animate-fade-up">
-        <div className="w-full max-w-screen-lg mt-10">
-          <div className="card bg-base-200 shadow-xl flex-row">
-            <figure className="inline flex p-5 w-60 pr-0">
-              <img src="" alt="Shoes" className="rounded-xl" />
-            </figure>
-            <div className="card-body">
-              <div className="flex items-center mb-2">
-                <h1 className="mr-5 text-2xl font-bold">Spot Robotics Podcast</h1>
-                <div className="relative grid select-none items-center whitespace-nowrap rounded-lg bg-gray-900 py-1.5 px-3 font-sans text-xs font-bold uppercase text-white mr-2">
-                  <span className="">Podcast</span>
-                </div>
-                <div className="relative grid select-none items-center whitespace-nowrap rounded-lg bg-gray-900 py-1.5 px-3 font-sans text-xs font-bold uppercase text-white mr-2">
-                  <span className="">Speaking</span>
-                </div>
-                <div className="relative grid select-none items-center whitespace-nowrap rounded-lg bg-gray-900 py-1.5 px-3 font-sans text-xs font-bold uppercase text-white mr-2">
-                  <span className="">Technology</span>
-                </div>
-                <div className="relative grid select-none items-center whitespace-nowrap rounded-lg bg-gray-900 py-1.5 px-3 font-sans text-xs font-bold uppercase text-white">
-                  <span className="">Business</span>
-                </div>
+        ))}
+      </section>
+
+      <section className="pb-20">
+        <h1 className="text-xl font-bold text-black dark:text-white mb-8">
+          Research
+        </h1>
+        {research.map((item, index) => (
+          <div key={index}>
+            <div className="py-5">
+              <h3 className="text-black dark:text-white font-semibold text-base">
+                {item.title}
+              </h3>
+              <p className="text-gray-500 dark:text-gray-500 text-sm mt-1">
+                {item.description}
+              </p>
+              <div className="flex flex-wrap gap-2 mt-3">
+                {item.tags.map((tag, tagIndex) => (
+                  <span
+                    key={tagIndex}
+                    className="text-xs px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse bibendum. Nunc non posuere consectetur, justo erat
-                semper enim, non hendrerit dui odio id enim.
-              </p>
             </div>
+            {index < research.length - 1 && (
+              <hr className="border-gray-200 dark:border-gray-700/50" />
+            )}
           </div>
-        </div>
-      </div>
-      <div className="flex justify-center animate-fade-up">
-        <div className="w-full max-w-screen-lg mt-10">
-          <div className="card bg-base-200 shadow-xl flex-row">
-            <figure className="inline flex p-5 w-60 pr-0">
-              <img src="" alt="Shoes" className="rounded-xl" />
-            </figure>
-            <div className="card-body">
-              <div className="flex items-center mb-2">
-                <h1 className="mr-5 text-2xl font-bold">Tech Thinkers</h1>
-                <div className="relative grid select-none items-center whitespace-nowrap rounded-lg bg-gray-900 py-1.5 px-3 font-sans text-xs font-bold uppercase text-white mr-2">
-                  <span className="">Web Design</span>
-                </div>
-                <div className="relative grid select-none items-center whitespace-nowrap rounded-lg bg-gray-900 py-1.5 px-3 font-sans text-xs font-bold uppercase text-white mr-2">
-                  <span className="">React</span>
-                </div>
-                <div className="relative grid select-none items-center whitespace-nowrap rounded-lg bg-gray-900 py-1.5 px-3 font-sans text-xs font-bold uppercase text-white mr-2">
-                  <span className="">Javascript</span>
-                </div>
-                <div className="relative grid select-none items-center whitespace-nowrap rounded-lg bg-gray-900 py-1.5 px-3 font-sans text-xs font-bold uppercase text-white">
-                  <span className="">NextUI</span>
-                </div>
-              </div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse bibendum. Nunc non posuere consectetur, justo erat
-                semper enim, non hendrerit dui odio id enim.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <h1
-        className={` text-black max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl mt-10 ml-52 animate-fade-up`}
-      >
-        Research
-      </h1>
-      <div className="flex justify-center animate-fade-up">
-        <div className="w-full max-w-screen-lg mt-10">
-          <div className="card bg-base-200 shadow-xl flex-row">
-            <figure className="inline flex p-5 w-60 pr-0">
-              <img src="" alt="Shoes" className="rounded-xl" />
-            </figure>
-            <div className="card-body">
-              <div className="flex items-center mb-2">
-                <h1 className="mr-5 text-2xl font-bold">TextShield</h1>
-                <div className="relative grid select-none items-center whitespace-nowrap rounded-lg bg-gray-900 py-1.5 px-3 font-sans text-xs font-bold uppercase text-white mr-2">
-                  <span className="">AI/ML</span>
-                </div>
-                <div className="relative grid select-none items-center whitespace-nowrap rounded-lg bg-gray-900 py-1.5 px-3 font-sans text-xs font-bold uppercase text-white mr-2">
-                  <span className="">Python</span>
-                </div>
-                <div className="relative grid select-none items-center whitespace-nowrap rounded-lg bg-gray-900 py-1.5 px-3 font-sans text-xs font-bold uppercase text-white mr-2">
-                  <span className="">Pandas</span>
-                </div>
-                <div className="relative grid select-none items-center whitespace-nowrap rounded-lg bg-gray-900 py-1.5 px-3 font-sans text-xs font-bold uppercase text-white">
-                  <span className="">Tensorflow</span>
-                </div>
-              </div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse bibendum. Nunc non posuere consectetur, justo erat
-                semper enim, non hendrerit dui odio id enim.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <Footer />
-    </div>
+        ))}
+      </section>
     </div>
   );
 }
