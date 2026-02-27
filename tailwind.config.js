@@ -1,6 +1,5 @@
 import { nextui } from "@nextui-org/react";
-import daisyUI from 'daisyui';
-import tailwindcssAnimated from 'tailwindcss-animated'; // Add import for 'tailwindcss-animated'
+import tailwindcssAnimated from 'tailwindcss-animated';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -13,6 +12,5 @@ export default {
     extend: {},
   },
   darkMode: "class",
-  plugins: [nextui(), daisyUI, tailwindcssAnimated], // Replace 'require' with the imported 'tailwindcssAnimated'
-  
+  plugins: [nextui(), tailwindcssAnimated],
 }
