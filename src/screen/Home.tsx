@@ -59,7 +59,7 @@ function Home() {
             GitHub
           </a>
           <a
-            href="https://www.linkedin.com/in/panav-m-70982b243/"
+            href="https://www.linkedin.com/in/panavmhatre/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors underline underline-offset-4 decoration-gray-400 dark:decoration-gray-600 text-sm"
