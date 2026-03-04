@@ -15,3 +15,18 @@ html:not(.dark) {
 body {
   @apply bg-white dark:bg-[#1a1a1a] text-black dark:text-white transition-colors;
 }
+
+@keyframes logo-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.logo-track {
+  display: flex;
+  width: max-content;
+  animation: logo-scroll 28s linear infinite;
+}
+
+.logo-track:hover {
+  animation-play-state: paused;
+}

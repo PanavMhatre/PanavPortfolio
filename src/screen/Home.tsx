@@ -1,5 +1,31 @@
 import { useState, useEffect, FormEvent } from "react";
 
+import appleLogo from "../assets/logos/apple.png";
+import linkedinLogo from "../assets/logos/linkedin.png";
+import jpmcLogo from "../assets/logos/jpmc.png";
+import mitLogo from "../assets/logos/mit.png";
+import cmuLogo from "../assets/logos/cmu.jpeg";
+import stanfordLogo from "../assets/logos/stanford.jpg";
+import utaustinLogo from "../assets/logos/utaustin.png";
+import dartmouthLogo from "../assets/logos/dartmouth.png";
+import amazonLogo from "../assets/logos/amazon.png";
+import unLogo from "../assets/logos/un.png";
+import aforeLogo from "../assets/logos/afore.jpeg";
+
+const logos = [
+  { src: appleLogo, alt: "Apple" },
+  { src: amazonLogo, alt: "Amazon" },
+  { src: linkedinLogo, alt: "LinkedIn" },
+  { src: jpmcLogo, alt: "JPMorgan Chase" },
+  { src: aforeLogo, alt: "Afore Capital" },
+  { src: unLogo, alt: "United Nations" },
+  { src: mitLogo, alt: "MIT" },
+  { src: cmuLogo, alt: "Carnegie Mellon" },
+  { src: stanfordLogo, alt: "Stanford" },
+  { src: utaustinLogo, alt: "UT Austin" },
+  { src: dartmouthLogo, alt: "Dartmouth" },
+];
+
 function Home() {
   const [austinTime, setAustinTime] = useState("");
   const [showTime, setShowTime] = useState(false);
@@ -66,6 +92,30 @@ function Home() {
           >
             LinkedIn
           </a>
+        </div>
+      </section>
+
+      <section className="pb-16">
+        <div className="border-t border-gray-200 dark:border-gray-800 pt-10 overflow-hidden relative">
+          {/* fade edges */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 z-10 bg-gradient-to-r from-white dark:from-[#1a1a1a] to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 z-10 bg-gradient-to-l from-white dark:from-[#1a1a1a] to-transparent" />
+
+          <div className="logo-track">
+            {[...logos, ...logos].map(({ src, alt }, i) => (
+              <div
+                key={`${alt}-${i}`}
+                className="flex items-center justify-center mx-10 h-9 shrink-0"
+              >
+                <img
+                  src={src}
+                  alt={alt}
+                  className="h-full w-auto max-w-[110px] object-contain"
+                  draggable={false}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
