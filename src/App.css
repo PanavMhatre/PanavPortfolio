@@ -1,8 +1,5 @@
-@font-face {
-  font-family: LeagueSpartan;
-  src: url(./fonts/LeagueSpartan-VariableFont_wght.ttf);
-}
-
 #root {
-  font-family: "LeagueSpartan", sans-serif;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
 }

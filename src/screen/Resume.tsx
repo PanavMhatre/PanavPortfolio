@@ -1,4 +1,5 @@
-import cowboysLogo from "../assets/logos/cowboys.png";
+import goldmanLogo from "../assets/logos/goldman.png";
+import mitLogo from "../assets/logos/mit.jpg";
 import stanfordLogo from "../assets/logos/stanford.jpg";
 import dartmouthLogo from "../assets/logos/dartmouth.png";
 import appleLogo from "../assets/logos/apple.png";
@@ -14,6 +15,8 @@ interface ResumeItem {
   logo: string;
   logoBg: string;
   logoImage?: string;
+  /** e.g. slightly zoom wordmarks that read small at fixed tile size */
+  logoImageClassName?: string;
 }
 
 function Resume() {
@@ -29,18 +32,13 @@ function Resume() {
           logoBg: "bg-[#2D2D2D]",
           logoImage: convergentLogo,
         },
-      ],
-    },
-    {
-      year: 2025,
-      items: [
         {
-          title: "Dallas Cowboys",
-          description: "Retail Technology",
-          date: "Mar 2025 — Aug 2025",
-          logo: "DC",
-          logoBg: "bg-[#003594]",
-          logoImage: cowboysLogo,
+          title: "Goldman Sachs",
+          description: "Software Engineering Fellow",
+          date: "Jan 2026 — Apr 2026",
+          logo: "",
+          logoBg: "bg-[#7399C6]",
+          logoImage: goldmanLogo,
         },
       ],
     },
@@ -87,8 +85,10 @@ function Resume() {
           title: "Massachusetts Institute of Technology",
           description: "Scientific Researcher",
           date: "Jul 2023 — Aug 2023",
-          logo: "MIT",
-          logoBg: "bg-[#A31F34]",
+          logo: "",
+          logoBg: "bg-[#E8E8E8]",
+          logoImage: mitLogo,
+          logoImageClassName: "scale-[2.1] origin-center",
         },
       ],
     },
@@ -139,19 +139,29 @@ function Resume() {
           <div key={group.year}>
             {group.items.map((item, index) => (
               <div key={index}>
-                <div className="flex items-center py-4 px-3 -mx-3 rounded-lg transition-colors hover:bg-gray-100 dark:hover:bg-white/5 cursor-default">
-                  <div className="w-16 flex-shrink-0">
+                <div className="flex items-center py-5 px-3 -mx-3 rounded-lg transition-colors hover:bg-white/[0.03] cursor-default">
+                  <div className="w-14 flex-shrink-0 tabular-nums">
                     {index === 0 && (
-                      <span className="text-gray-500 dark:text-gray-400 text-sm font-medium">
+                      <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-neutral-500">
                         {group.year}
                       </span>
                     )}
                   </div>
                   <div
-                    className={`w-10 h-10 rounded-lg ${item.logoBg} flex items-center justify-center flex-shrink-0 mr-4 overflow-hidden`}
+                    className={`w-10 h-10 rounded-md ${item.logoBg} flex items-center justify-center flex-shrink-0 mr-4 overflow-hidden ring-1 ${
+                      item.logoBg === "bg-[#E8E8E8]"
+                        ? "ring-black/10"
+                        : "ring-white/5"
+                    }`}
                   >
                     {item.logoImage ? (
-                      <img src={item.logoImage} alt={item.title} className="w-full h-full object-contain p-1" />
+                      <img
+                        src={item.logoImage}
+                        alt={item.title}
+                        className={`h-full w-full object-contain ${
+                          item.logoBg === "bg-[#E8E8E8]" ? "p-1.5" : "p-1"
+                        } ${item.logoImageClassName ?? ""}`}
+                      />
                     ) : (
                       <span className="text-white text-xs font-bold">
                         {item.logo}
@@ -159,34 +169,34 @@ function Resume() {
                     )}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-black dark:text-white font-semibold text-sm">
+                    <h3 className="text-[15px] font-semibold text-neutral-100 tracking-tight">
                       {item.title}
                     </h3>
-                    <p className="text-gray-500 dark:text-gray-500 text-xs mt-0.5">
+                    <p className="text-sm text-neutral-500 mt-0.5">
                       {item.description}
                     </p>
                   </div>
-                  <div className="flex-shrink-0 ml-4">
-                    <span className="text-gray-400 dark:text-gray-500 text-xs whitespace-nowrap">
+                  <div className="flex-shrink-0 ml-4 text-right">
+                    <span className="text-xs text-neutral-600 whitespace-nowrap">
                       {item.date}
                     </span>
                   </div>
                 </div>
-                <hr className="border-gray-100 dark:border-gray-800/50 ml-16" />
+                <div className="ml-14 h-px bg-white/[0.06]" />
               </div>
             ))}
           </div>
         ))}
 
-        <div className="mt-16">
-          <h2 className="text-xl font-bold text-black dark:text-white mb-6">
+        <div className="mt-20">
+          <h2 className="text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-500 mb-8">
             Awards
           </h2>
           {awards.map((award, index) => (
             <div key={index}>
-              <div className="flex items-center py-4 px-3 -mx-3 rounded-lg transition-colors hover:bg-gray-100 dark:hover:bg-white/5 cursor-default">
+              <div className="flex items-center py-5 px-3 -mx-3 rounded-lg transition-colors hover:bg-white/[0.03] cursor-default">
                 <div
-                  className={`w-10 h-10 rounded-lg ${award.logoBg} flex items-center justify-center flex-shrink-0 mr-4 overflow-hidden`}
+                  className={`w-10 h-10 rounded-md ${award.logoBg} flex items-center justify-center flex-shrink-0 mr-4 overflow-hidden ring-1 ring-white/5`}
                 >
                   {award.logoImage ? (
                     <img src={award.logoImage} alt={award.title} className="w-full h-full object-contain p-1" />
@@ -197,65 +207,65 @@ function Resume() {
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-black dark:text-white font-semibold text-sm">
+                  <h3 className="text-[15px] font-semibold text-neutral-100 tracking-tight">
                     {award.title}
                   </h3>
-                  <p className="text-gray-500 dark:text-gray-500 text-xs mt-0.5">
+                  <p className="text-sm text-neutral-500 mt-0.5">
                     {award.description}
                   </p>
                 </div>
                 <div className="flex-shrink-0 ml-4">
-                  <span className="text-gray-400 dark:text-gray-500 text-xs">
+                  <span className="text-xs text-neutral-600 tabular-nums">
                     {award.date}
                   </span>
                 </div>
               </div>
               {index < awards.length - 1 && (
-                <hr className="border-gray-100 dark:border-gray-800/50" />
+                <div className="h-px bg-white/[0.06]" />
               )}
             </div>
           ))}
         </div>
 
-        <div className="mt-16">
-          <h2 className="text-xl font-bold text-black dark:text-white mb-6">
+        <div className="mt-20">
+          <h2 className="text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-500 mb-8">
             Education
           </h2>
-          <div className="flex items-center py-4 px-3 -mx-3 rounded-lg transition-colors hover:bg-gray-100 dark:hover:bg-white/5 cursor-default">
-            <div className="w-10 h-10 rounded-lg bg-[#BF5700] flex items-center justify-center flex-shrink-0 mr-4 overflow-hidden">
+          <div className="flex items-center py-5 px-3 -mx-3 rounded-lg transition-colors hover:bg-white/[0.03] cursor-default">
+            <div className="w-10 h-10 rounded-md bg-[#BF5700] flex items-center justify-center flex-shrink-0 mr-4 overflow-hidden ring-1 ring-white/5">
               <img src={utaustinLogo} alt="University of Texas at Austin" className="w-full h-full object-contain p-1" />
             </div>
             <div className="flex-1 min-w-0">
-              <h3 className="text-black dark:text-white font-semibold text-sm">
+              <h3 className="text-[15px] font-semibold text-neutral-100 tracking-tight">
                 University of Texas at Austin
               </h3>
-              <p className="text-gray-500 dark:text-gray-500 text-xs mt-0.5">
+              <p className="text-sm text-neutral-500 mt-0.5">
                 B.S. Computer Science
               </p>
             </div>
           </div>
         </div>
 
-        <div className="mt-16">
-          <h2 className="text-xl font-bold text-black dark:text-white mb-6">
+        <div className="mt-20">
+          <h2 className="text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-500 mb-8">
             Skills
           </h2>
           {skills.map((skill, index) => (
             <div key={index}>
-              <div className="flex items-start py-4">
+              <div className="flex items-start py-5">
                 <div className="w-28 flex-shrink-0">
-                  <span className="text-gray-500 dark:text-gray-400 text-sm font-medium">
+                  <span className="text-[11px] font-medium uppercase tracking-[0.15em] text-neutral-500">
                     {skill.category}
                   </span>
                 </div>
                 <div className="flex-1">
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
+                  <p className="text-sm text-neutral-400 leading-relaxed">
                     {skill.items}
                   </p>
                 </div>
               </div>
               {index < skills.length - 1 && (
-                <hr className="border-gray-100 dark:border-gray-800/50" />
+                <div className="h-px bg-white/[0.06]" />
               )}
             </div>
           ))}

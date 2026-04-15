@@ -5,10 +5,12 @@ import Projects from "./screen/Projects";
 import Blog from "./screen/Blog";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import CursorFollower from "./components/CursorFollower";
 
 function App() {
   return (
-    <div className="min-h-screen bg-white dark:bg-[#1a1a1a] transition-colors">
+    <div className="min-h-screen bg-[#0a0a0a] text-neutral-100">
+      <CursorFollower />
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />

@@ -4,16 +4,12 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #1a1a1a !important;
+  background-color: #0a0a0a !important;
   overscroll-behavior: none;
 }
 
-html:not(.dark) {
-  background-color: white !important;
-}
-
 body {
-  @apply bg-white dark:bg-[#1a1a1a] text-black dark:text-white transition-colors;
+  @apply bg-[#0a0a0a] text-neutral-100 antialiased;
 }
 
 @keyframes logo-scroll {
@@ -29,4 +25,16 @@ body {
 
 .logo-track:hover {
   animation-play-state: paused;
+}
+
+/* Custom cursor only — system cursor hidden, text fields keep the I-beam */
+body.custom-cursor-active,
+body.custom-cursor-active * {
+  cursor: none !important;
+}
+
+body.custom-cursor-active input:not([type="button"]):not([type="checkbox"]):not([type="color"]):not([type="file"]):not([type="hidden"]):not([type="image"]):not([type="radio"]):not([type="range"]):not([type="reset"]):not([type="submit"]),
+body.custom-cursor-active textarea,
+body.custom-cursor-active [contenteditable="true"] {
+  cursor: text !important;
 }

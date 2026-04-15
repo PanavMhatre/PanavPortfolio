@@ -33,23 +33,23 @@ function Projects() {
   return (
     <div className="w-full max-w-3xl mx-auto px-6 animate-fade-up">
       <section className="pt-16 pb-10">
-        <h1 className="text-xl font-bold text-black dark:text-white mb-8">
+        <h1 className="text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-500 mb-10">
           Projects
         </h1>
         {projects.map((project, index) => (
           <div key={index}>
-            <div className="py-5">
-              <h3 className="text-black dark:text-white font-semibold text-base">
+            <div className="py-6">
+              <h3 className="text-[15px] font-semibold text-neutral-100 tracking-tight">
                 {project.title}
               </h3>
-              <p className="text-gray-500 dark:text-gray-500 text-sm mt-1">
+              <p className="text-sm text-neutral-500 mt-1.5 leading-relaxed">
                 {project.description}
               </p>
-              <div className="flex flex-wrap gap-2 mt-3">
+              <div className="flex flex-wrap gap-2 mt-4">
                 {project.tags.map((tag, tagIndex) => (
                   <span
                     key={tagIndex}
-                    className="text-xs px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400"
+                    className="text-[11px] px-2.5 py-1 rounded-md bg-white/[0.06] text-neutral-400 ring-1 ring-white/[0.06]"
                   >
                     {tag}
                   </span>
@@ -57,30 +57,30 @@ function Projects() {
               </div>
             </div>
             {index < projects.length - 1 && (
-              <hr className="border-gray-200 dark:border-gray-700/50" />
+              <div className="h-px bg-white/[0.06]" />
             )}
           </div>
         ))}
       </section>
 
       <section className="pb-20">
-        <h1 className="text-xl font-bold text-black dark:text-white mb-8">
+        <h2 className="text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-500 mb-10">
           Research
-        </h1>
+        </h2>
         {research.map((item, index) => (
           <div key={index}>
-            <div className="py-5">
-              <h3 className="text-black dark:text-white font-semibold text-base">
+            <div className="py-6">
+              <h3 className="text-[15px] font-semibold text-neutral-100 tracking-tight">
                 {item.title}
               </h3>
-              <p className="text-gray-500 dark:text-gray-500 text-sm mt-1">
+              <p className="text-sm text-neutral-500 mt-1.5 leading-relaxed">
                 {item.description}
               </p>
-              <div className="flex flex-wrap gap-2 mt-3">
+              <div className="flex flex-wrap gap-2 mt-4">
                 {item.tags.map((tag, tagIndex) => (
                   <span
                     key={tagIndex}
-                    className="text-xs px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400"
+                    className="text-[11px] px-2.5 py-1 rounded-md bg-white/[0.06] text-neutral-400 ring-1 ring-white/[0.06]"
                   >
                     {tag}
                   </span>
@@ -88,7 +88,7 @@ function Projects() {
               </div>
             </div>
             {index < research.length - 1 && (
-              <hr className="border-gray-200 dark:border-gray-700/50" />
+              <div className="h-px bg-white/[0.06]" />
             )}
           </div>
         ))}

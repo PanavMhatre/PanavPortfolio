@@ -1,9 +1,9 @@
 function Footer() {
   return (
-    <footer className="w-full max-w-3xl mx-auto px-6 pb-8">
-      <hr className="border-gray-200 dark:border-gray-700 mb-6" />
+    <footer className="w-full max-w-3xl mx-auto px-6 pb-10">
+      <div className="h-px bg-white/[0.06] mb-8" />
       <div className="text-center">
-        <p className="text-sm text-gray-500 dark:text-gray-500">
+        <p className="text-[11px] uppercase tracking-[0.18em] text-neutral-600">
           &copy; {new Date().getFullYear()} Panav Mhatre
         </p>
       </div>
