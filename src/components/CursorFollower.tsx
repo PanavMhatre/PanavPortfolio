@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useMotionValue, useSpring } from "framer-motion";
 
 const SPRING = { stiffness: 420, damping: 34, mass: 0.32 };
@@ -68,9 +68,11 @@ function PointerCursor({ clicking }: { clicking: boolean }) {
 
 function CursorFollower() {
   const [active, setActive] = useState(false);
+  const [visible, setVisible] = useState(false);
   const [clicking, setClicking] = useState(false);
   const [pulseKey, setPulseKey] = useState(0);
   const [hiddenForText, setHiddenForText] = useState(false);
+  const hasPointerPosition = useRef(false);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -94,35 +96,71 @@ function CursorFollower() {
       setHiddenForText(isTextTarget(target));
     };
 
+    const syncPointerPosition = (e: MouseEvent, immediate = false) => {
+      if (immediate || !hasPointerPosition.current || !visible) {
+        x.jump(e.clientX);
+        y.jump(e.clientY);
+        sx.jump(e.clientX);
+        sy.jump(e.clientY);
+      } else {
+        x.set(e.clientX);
+        y.set(e.clientY);
+      }
+
+      hasPointerPosition.current = true;
+    };
+
+    const revealCursor = (e: MouseEvent) => {
+      syncPointerPosition(e, true);
+      setVisible(true);
+    };
+
     const move = (e: MouseEvent) => {
-      x.set(e.clientX);
-      y.set(e.clientY);
+      syncPointerPosition(e);
       syncTextMode(e.target);
+      setVisible(true);
     };
 
     const down = (e: MouseEvent) => {
+      revealCursor(e);
       syncTextMode(e.target);
       if (e.button !== 0 || isTextTarget(e.target)) return;
       setClicking(true);
       setPulseKey((key) => key + 1);
     };
 
-    const over = (e: MouseEvent) => syncTextMode(e.target);
+    const over = (e: MouseEvent) => {
+      revealCursor(e);
+      syncTextMode(e.target);
+    };
     const up = () => setClicking(false);
-    const reset = () => setClicking(false);
+    const hideCursor = () => {
+      setVisible(false);
+      setClicking(false);
+    };
+    const handleWindowExit = (e: MouseEvent) => {
+      if (!e.relatedTarget) hideCursor();
+    };
+    const handleVisibilityChange = () => {
+      if (document.hidden) hideCursor();
+    };
 
     window.addEventListener("mousemove", move);
     window.addEventListener("mouseover", over);
     window.addEventListener("mousedown", down);
     window.addEventListener("mouseup", up);
-    window.addEventListener("blur", reset);
+    window.addEventListener("mouseout", handleWindowExit);
+    window.addEventListener("blur", hideCursor);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       window.removeEventListener("mousemove", move);
       window.removeEventListener("mouseover", over);
       window.removeEventListener("mousedown", down);
       window.removeEventListener("mouseup", up);
-      window.removeEventListener("blur", reset);
+      window.removeEventListener("mouseout", handleWindowExit);
+      window.removeEventListener("blur", hideCursor);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       document.body.classList.remove("custom-cursor-active");
     };
   }, [x, y]);
@@ -137,8 +175,8 @@ function CursorFollower() {
         y: sy,
       }}
       animate={{
-        opacity: hiddenForText ? 0 : 1,
-        scale: hiddenForText ? 0.96 : 1,
+        opacity: visible && hasPointerPosition.current && !hiddenForText ? 1 : 0,
+        scale: visible && hasPointerPosition.current && !hiddenForText ? 1 : 0.96,
       }}
       transition={{ duration: 0.14, ease: "easeOut" }}
       aria-hidden
