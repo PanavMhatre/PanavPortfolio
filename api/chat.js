@@ -1,49 +1,47 @@
 /**
- * Vercel Serverless — Groq Chat Completions.
+ * Vercel Serverless, Groq Chat Completions.
  * Set GROQ_API_KEY in your local env / Vercel project env.
  * https://console.groq.com/docs/text-chat
  */
 
 const PORTFOLIO_CONTEXT = `
 Current portfolio and resume context:
-- Panav Mhatre is a Computer Science student at UT Austin based in Austin, Texas.
-- Focus areas: AI/ML, backend infrastructure, systems and low-level programming, and product-minded software engineering.
-- Contact: panav@utexas.edu, GitHub @panavmhatre, LinkedIn linkedin.com/in/panavmhatre.
+- Panav Mhatre is a Computer Science and Statistics & Data Science student at UT Austin (B.S., expected May 2028) based in Austin, Texas.
+- Focus areas: backend systems, ML pipelines, and product-minded software engineering.
+- Contact: mhatrepanav@gmail.com, GitHub @panavmhatre, LinkedIn linkedin.com/in/panavmhatre.
 
-Current experience timeline shown on the site:
-- Convergent — Software Developer (Jan 2026 to present).
-- Goldman Sachs — Software Engineering Fellow (Jan 2026 to Apr 2026).
-- Stanford University — Research Assistant (Jul 2024 to present).
-- Dartmouth College — Machine Learning Researcher (May 2024 to Jun 2025).
-- Beacon of Hope — Co-Founder (Jan 2024 to present), with a STEM outreach / access mission.
-- University of North Texas — Machine Learning Researcher (Jul 2023 to Apr 2025).
-- Massachusetts Institute of Technology — Scientific Researcher (Jul 2023 to Aug 2023).
+Experience:
+- UT Austin, RobIn Lab, Austin, TX: Undergraduate Researcher (Jan 2026 to Present). Built an Isaac Lab humanoid locomanipulation environment for object pushing across 3 randomized hidden properties (mass, size, friction); integrated a 2-policy control stack combining pretrained lower-body locomotion with upper-body manipulation; increased cube-pushing task success rate by 87% through reward shaping; designed a meta-RL adaptation module using Transformer-XL/RNN in-context memory on a 4-person team, enabling adaptation to unseen object dynamics without retraining. Trained on an HPC cluster using NVIDIA Isaac Sim.
+- Fidelity Investments, Westlake, TX: Software Engineer Intern (Jun 2026 to Aug 2026). Built and deployed a Java Spring Boot backend service and REST API processing 2,000+ daily trades from Oracle; reduced unconfirmed trade reconciliation time by 65% via automated broker email notifications through the JavaMail API; launched the pipeline for Fidelity's European Trade Operations team and presented it to the Chief Operations Officer; tested with JUnit/SonarQube and deployed via Jenkins and IBM UrbanCode.
+- Stanford University, S3L Lab, Stanford, CA: Undergraduate Research Assistant (Jul 2024 to May 2026). Integrated Department of Energy API data covering regions serving 10M residents; built a hybrid LSTM-XGBoost time-series forecasting framework in PyTorch/scikit-learn that reduced forecasting error ~18% vs. a baseline RNN; built real-time Plotly dashboards for grid monitoring; automated ML workflows on AWS EC2.
 
-Projects currently featured on the site:
-- GoFit — student-focused fitness app.
-- Red Alert — real-time disaster visualization tool meant to help vulnerable populations stay safe.
-- LearnX — learning platform for rural students with curated paths and interactive coding challenges.
-- EarthDefenders — climate action education app built with Swift / SwiftUI / AR ideas.
-- TextShield — AI-powered text classification and content moderation project built with Python and TensorFlow.
+Leadership:
+- Beacon of Hope Charity, Plano, TX: Founder (Mar 2024 to Aug 2026). Organized a door-to-door fundraising campaign raising over $15,000 for pediatric cancer research across 300+ neighborhoods; directed a team of 50+ volunteers.
+
+Projects currently featured on the site (grouped as "Systems & Low-Level" and "Projects"):
+- ASML Interpreter (Jun 2025): custom instruction-set interpreter in C with 20+ low-level operations, hand-rolled interpreter stack, 64-bit register simulation, manual heap management.
+- C Memory Manager (Mar 2026): custom umalloc()/ufree() allocator in C with 6 segregated free lists, block splitting, and physical-neighbor coalescing.
+- UTCS Shell (Sep 2026): Unix shell in C with fork()/execv() dispatch, dup2()-based I/O redirection, and concurrent job groups reaped via wait()/waitpid().
+- ArbPoly (Apr 2026): prediction-market arbitrage scanner comparing Kalshi and Polymarket orderbooks (TypeScript/Next.js), with a from-scratch rate limiter, an O(n) market-equivalence engine, and a hardcoded trading-disabled safety flag (read-only, no live orders).
+- UT Austin Courses MCP Server (Mar 2026): local MCP (Model Context Protocol) server exposing UT Austin's course catalog to AI clients via typed tool endpoints, in Python with a pytest suite.
+- Interval (Jun 2025): AI-powered iOS app in Swift/SwiftUI for 300+ student users, integrating the OpenAI API and MySQL pipelines to unify Apple Health, OCR, and provider records; 78% retention; won MLH Hook 'Em Hacks and presented to Pear VC, Entrepreneur First, and a16z.
+- LearnX (May 2025): interactive course platform built with Node.js, Express.js, Next.js, and MongoDB; ~12 minute average session duration, 100+ users, CI/CD via Vercel and GitHub Actions.
 
 Awards and education:
-- Apple Swift Student Challenge winner.
-- Congressional Gold Award.
-- B.S. Computer Science at The University of Texas at Austin.
+- Goldman Sachs Software Emerging Leader (2026).
+- MLH Hook 'Em Hacks, 1st Place (2026).
+- LinkedIn Scholarship (2025).
+- Wells Fargo Scholarship Winner (2025).
+- Apple Swift Student Challenge Winner (2025).
+- USACO Gold.
+- B.S. Computer Science and B.S. Statistics & Data Science, The University of Texas at Austin (May 2028). Organizations: ColorStack, UT ACM (Operational Officer), Management Leadership for Tomorrow, CodePath, UT Genesis.
 
 Skills shown on the resume:
-- Languages: Python, Java, Swift, SQL, HTML, CSS, JavaScript, TypeScript, Dart.
-- AI/ML: TensorFlow, PyTorch, Keras, NumPy, Pandas, Matplotlib, Seaborn.
-- Frameworks: React, Flutter, Next.js, Tailwind CSS.
-- Tools: Git, Docker, AWS, Firebase.
+- Languages: Java, Python, C, C++, SQL, TypeScript, JavaScript, Swift, Kotlin, R.
+- Frameworks/Databases: Spring Boot, React, Node.js, Express.js, Next.js, PyTorch, MongoDB, MySQL.
+- Tools: Git, Linux/Unix, AWS, Azure, Docker, Kubernetes, Jenkins, GitHub Actions, Claude Code, Cursor.
 
-Public web signals that can be used carefully:
-- GitHub profile describes Panav as focused on clean, efficient, scalable applications across frontend, backend, infrastructure, and machine learning. Pinned repos include EarthDefenders, LearnX, TweetAnalysis, and an ASML Command Interpreter.
-- Amazon Music lists him as host of the Spot Robotics Podcast, with conversations spanning AI, software engineering, cybersecurity, medicine, and NASA ML.
-- DEV Community shows March and April 2026 writing about keeping AI-assisted code maintainable over time.
-- UNA-USA's Global Goals Ambassadors page highlights his Apple Swift Student Challenge recognition, research background, and STEM outreach work.
-
-When current portfolio/resume details conflict with older third-party web pages, prefer the current portfolio/resume details first.
+Only use the facts above. Do not reference older public web signals (podcasts, DEV Community posts, other organizations) unless the visitor brings them up first, and even then flag them as unverified rather than resume facts.
 `;
 
 const SYSTEM = `You are the assistant on Panav Mhatre's personal portfolio site.
@@ -56,7 +54,7 @@ Answer style:
 - Be specific about projects and impact when possible.
 - If something is uncertain, say so plainly.
 - If asked about experience that only appears in public web signals, frame it as a public signal rather than a core resume fact.
-- If asked something not covered, say you're not sure and suggest checking the Resume / Projects pages or emailing Panav.
+- If asked something not covered, say you're not sure and suggest checking the project links or emailing Panav.
 
 ${PORTFOLIO_CONTEXT}`;
 

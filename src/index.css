@@ -27,7 +27,7 @@ body {
   animation-play-state: paused;
 }
 
-/* Custom cursor only — system cursor hidden, text fields keep the I-beam */
+/* Custom cursor only. The system cursor is hidden, while text fields keep the I-beam. */
 body.custom-cursor-active,
 body.custom-cursor-active * {
   cursor: none !important;
