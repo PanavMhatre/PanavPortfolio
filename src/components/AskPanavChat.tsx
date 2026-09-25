@@ -12,12 +12,12 @@ const CHAT_TITLE = "Ask me anything.";
 const CHAT_SUBTITLE =
   "Ask about projects, research, internships, writing, podcasting, or how Panav likes to build.";
 const PROMPT_POOL = [
-  "Which of your projects feels most representative of you?",
-  "Tell me about EarthDefenders and the Swift Challenge connection.",
-  "What makes LearnX meaningful to you?",
-  "Why did you build Red Alert?",
-  "What problem was GoFit trying to solve?",
-  "What does TextShield show about your AI work?",
+  "Tell me about your humanoid robotics research at RobIn Lab.",
+  "What did you build at Fidelity Investments?",
+  "Tell me about your research at Stanford's S3L Lab.",
+  "What makes Interval meaningful to you?",
+  "Walk me through your systems projects (the interpreter, allocator, shell).",
+  "What does Beacon of Hope do?",
   "Which project pushed you the most technically?",
   "If I only open one project, which one should I start with?",
 ];
