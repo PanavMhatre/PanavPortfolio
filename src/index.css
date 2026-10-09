@@ -23,6 +23,15 @@ body {
   min-width: 320px;
 }
 
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* Fireflies — a hidden easter egg payoff, not a persistent decoration. */
 @keyframes firefly-rise {
   0% {
@@ -82,15 +91,6 @@ textarea:focus-visible,
   border-radius: 999px;
   background: var(--sky);
   box-shadow: 0 0 18px rgba(139, 213, 255, 0.42);
-}
-
-.photo-rail {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.photo-rail::-webkit-scrollbar {
-  display: none;
 }
 
 .photo-card::after {

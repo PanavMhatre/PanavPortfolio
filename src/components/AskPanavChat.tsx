@@ -183,7 +183,7 @@ function AskPanavChat() {
 
   return (
     <section className="pb-16 w-full">
-      <div className="w-full overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.025] shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
+      <div className="w-full overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.025] shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
         <div className="border-b border-white/[0.07] bg-[linear-gradient(180deg,rgba(139,213,255,0.035),transparent)] px-5 py-5 sm:px-6">
           <div className="mb-1 font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-sky">
             Interactive profile

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   CheckIcon,
   DownloadIcon,
@@ -8,6 +8,7 @@ import {
   MoonIcon,
   SunIcon,
 } from "../components/icons";
+import headshot from "../assets/headshot.png";
 
 const photoStudies = [
   {
@@ -16,6 +17,7 @@ const photoStudies = [
     src: "/photos/falling-water.jpg",
     alt: "Waterfalls descending through a granite mountain valley",
     position: "62% center",
+    rotate: "rotate-2",
   },
   {
     number: "02",
@@ -23,6 +25,7 @@ const photoStudies = [
     src: "/photos/through-the-pines.jpg",
     alt: "Layered mountain ridges framed by tall pine trees",
     position: "center 58%",
+    rotate: "-rotate-2",
   },
   {
     number: "03",
@@ -30,6 +33,7 @@ const photoStudies = [
     src: "/photos/granite-light.jpg",
     alt: "Sunlit granite ridges above a green forest",
     position: "center 50%",
+    rotate: "rotate-2",
   },
 ];
 
@@ -37,7 +41,6 @@ function Hero() {
   const [austinTime, setAustinTime] = useState("");
   const [isDaytime, setIsDaytime] = useState(true);
   const [copied, setCopied] = useState(false);
-  const railRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const update = () => {
@@ -65,12 +68,6 @@ function Hero() {
     return () => window.clearInterval(interval);
   }, []);
 
-  const moveRail = (direction: number) => {
-    const rail = railRef.current;
-    if (!rail) return;
-    rail.scrollBy({ left: direction * rail.clientWidth * 0.82, behavior: "smooth" });
-  };
-
   const copyEmail = async () => {
     try {
       await navigator.clipboard.writeText("mhatrepanav@gmail.com");
@@ -83,13 +80,16 @@ function Hero() {
 
   return (
     <section id="about" className="scroll-mt-20 pb-16 pt-16 sm:pb-20 sm:pt-20">
-      <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-16">
+      <div>
         <div>
-          <div className="mb-5 h-px w-12 bg-sky/40" aria-hidden="true" />
-          <p className="mb-4 font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-sky">
-            [ Computer Science &amp; Statistics · UT Austin ]
-          </p>
-          <h1 className="mb-6 text-4xl font-semibold tracking-[-0.04em] text-neutral-100 sm:text-5xl">
+          <img
+            src={headshot}
+            alt="Panav Mhatre"
+            width="80"
+            height="80"
+            className="mb-5 h-20 w-20 rounded-full border border-white/10 object-cover"
+          />
+          <h1 className="mb-6 text-5xl font-bold tracking-tight text-neutral-100 sm:text-6xl">
             Panav Mhatre
           </h1>
           <p className="max-w-xl text-[15px] leading-7 text-neutral-400">
@@ -117,123 +117,67 @@ function Hero() {
             </span>
           </div>
 
-          <div className="mt-7 flex flex-wrap items-center gap-6">
+          <div className="mt-7 flex items-center gap-4">
             <a
               href="https://github.com/panavmhatre"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex min-h-11 items-center gap-2 text-sm text-neutral-400 transition-colors hover:text-neutral-100"
+              aria-label="GitHub"
+              className="flex h-11 w-11 items-center justify-center text-neutral-500 transition-colors hover:text-sky"
             >
-              <GitHubIcon className="h-4 w-4 text-neutral-500 transition-colors group-hover:text-sky" />
-              GitHub
+              <GitHubIcon className="h-5 w-5" />
             </a>
             <a
               href="https://www.linkedin.com/in/panavmhatre/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex min-h-11 items-center gap-2 text-sm text-neutral-400 transition-colors hover:text-neutral-100"
+              aria-label="LinkedIn"
+              className="flex h-11 w-11 items-center justify-center text-neutral-500 transition-colors hover:text-sky"
             >
-              <LinkedInIcon className="h-4 w-4 text-neutral-500 transition-colors group-hover:text-sky" />
-              LinkedIn
+              <LinkedInIcon className="h-5 w-5" />
             </a>
             <button
               type="button"
               onClick={copyEmail}
-              className="group inline-flex min-h-11 items-center gap-2 text-sm text-neutral-400 transition-colors hover:text-neutral-100"
+              aria-label={copied ? "Email copied" : "Copy email address"}
+              className="flex h-11 w-11 items-center justify-center text-neutral-500 transition-colors hover:text-sky"
             >
-              {copied ? (
-                <CheckIcon className="h-4 w-4 text-mint" />
-              ) : (
-                <MailIcon className="h-4 w-4 text-neutral-500 transition-colors group-hover:text-sky" />
-              )}
-              {copied ? "Copied" : "Email"}
+              {copied ? <CheckIcon className="h-5 w-5 text-mint" /> : <MailIcon className="h-5 w-5" />}
             </button>
             <a
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex min-h-11 items-center gap-2 text-sm text-neutral-400 transition-colors hover:text-neutral-100"
+              aria-label="Resume"
+              className="flex h-11 w-11 items-center justify-center text-neutral-500 transition-colors hover:text-sky"
             >
-              <DownloadIcon className="h-4 w-4 text-neutral-500 transition-colors group-hover:text-sky" />
-              Resume
+              <DownloadIcon className="h-5 w-5" />
             </a>
           </div>
-
-          <div className="mt-8 h-px w-12 bg-sky/40" aria-hidden="true" />
         </div>
 
-        <aside id="personal" aria-label="Personal nature photography">
-          <div className="mb-4 flex items-end justify-between gap-4">
-            <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-neutral-500">
-                Outside the terminal
-              </p>
-              <p className="mt-1 text-sm text-neutral-400">Places that made me stop.</p>
+        <div
+          aria-label="Personal nature photography"
+          className="no-scrollbar mt-10 flex snap-x snap-mandatory justify-start gap-5 overflow-x-auto py-2 sm:justify-center sm:gap-8"
+        >
+          {photoStudies.map((study, index) => (
+            <div
+              key={study.number}
+              className={`relative aspect-[9/10] w-40 flex-none snap-start overflow-hidden rounded-xl bg-[#111419] sm:w-64 sm:rounded-2xl md:w-72 ${study.rotate}`}
+            >
+              <img
+                src={study.src}
+                alt={study.alt}
+                loading={index === 0 ? "eager" : "lazy"}
+                decoding="async"
+                width="1400"
+                height="1050"
+                className="photo-develop h-full w-full object-cover"
+                style={{ objectPosition: study.position, animationDelay: `${index * 160}ms` }}
+              />
             </div>
-            <div className="flex gap-2">
-              <button
-                type="button"
-                onClick={() => moveRail(-1)}
-                aria-label="Previous photograph"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-neutral-400 transition-colors hover:border-sky/40 hover:text-sky"
-              >
-                ←
-              </button>
-              <button
-                type="button"
-                onClick={() => moveRail(1)}
-                aria-label="Next photograph"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-neutral-400 transition-colors hover:border-sky/40 hover:text-sky"
-              >
-                →
-              </button>
-            </div>
-          </div>
-
-          <div
-            ref={railRef}
-            className="photo-rail flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth pb-2"
-            tabIndex={0}
-            onKeyDown={(event) => {
-              if (event.key === "ArrowLeft") moveRail(-1);
-              if (event.key === "ArrowRight") moveRail(1);
-            }}
-          >
-            {photoStudies.map((study, index) => (
-              <figure
-                key={study.number}
-                className="photo-card group relative aspect-[4/5] min-w-[82%] snap-start overflow-hidden rounded-xl border border-white/10 bg-[#111419]"
-              >
-                <img
-                  src={study.src}
-                  alt={study.alt}
-                  loading={index === 0 ? "eager" : "lazy"}
-                  decoding="async"
-                  width="1400"
-                  height="1050"
-                  className="photo-develop h-full w-full object-cover"
-                  style={{ objectPosition: study.position, animationDelay: `${index * 160}ms` }}
-                />
-
-                {/* Viewfinder corners — a small nod to this being personal photography, not stock art. */}
-                <span className="pointer-events-none absolute left-2.5 top-2.5 z-10 h-3 w-3 border-l border-t border-sky/50 transition-colors group-hover:border-sky" />
-                <span className="pointer-events-none absolute right-2.5 top-2.5 z-10 h-3 w-3 border-r border-t border-sky/50 transition-colors group-hover:border-sky" />
-                <span className="pointer-events-none absolute bottom-2.5 left-2.5 z-10 h-3 w-3 border-b border-l border-sky/50 transition-colors group-hover:border-sky" />
-                <span className="pointer-events-none absolute bottom-2.5 right-2.5 z-10 h-3 w-3 border-b border-r border-sky/50 transition-colors group-hover:border-sky" />
-
-                <figcaption className="absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-3 p-4 text-white">
-                  <span className="text-sm font-medium">{study.label}</span>
-                  <span className="font-mono text-[9px] tracking-[0.14em] text-white/65">
-                    F{study.number} / 03
-                  </span>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-          <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.12em] text-neutral-600">
-            Scroll, drag, or use the arrows
-          </p>
-        </aside>
+          ))}
+        </div>
       </div>
     </section>
   );
