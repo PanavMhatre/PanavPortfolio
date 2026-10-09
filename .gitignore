@@ -7,3 +7,4 @@ dist
 node_modules
 .vercel
 .gstack/
+.claude/settings.local.json

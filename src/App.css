@@ -1,5 +1,5 @@
 #root {
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  font-family: "Manrope", sans-serif;
+  font-feature-settings: "ss01", "ss02", "cv02", "cv03";
   -webkit-font-smoothing: antialiased;
 }

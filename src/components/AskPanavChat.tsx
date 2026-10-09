@@ -10,7 +10,7 @@ interface Msg {
 
 const CHAT_TITLE = "Ask me anything.";
 const CHAT_SUBTITLE =
-  "Ask about projects, research, internships, writing, podcasting, or how Panav likes to build.";
+  "Ask about a project, a research thread, or how Panav approaches building.";
 const PROMPT_POOL = [
   "Tell me about your humanoid robotics research at RobIn Lab.",
   "What did you build at Fidelity Investments?",
@@ -183,12 +183,12 @@ function AskPanavChat() {
 
   return (
     <section className="pb-16 w-full">
-      <div className="w-full overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.025] shadow-[0_0_0_1px_rgba(255,255,255,0.03)]">
-        <div className="border-b border-white/[0.06] bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))] px-5 py-5 sm:px-6">
-          <div className="mb-1 text-[11px] font-medium uppercase tracking-[0.22em] text-neutral-500">
-            Ask about Panav
+      <div className="w-full overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.025] shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
+        <div className="border-b border-white/[0.07] bg-[linear-gradient(180deg,rgba(139,213,255,0.035),transparent)] px-5 py-5 sm:px-6">
+          <div className="mb-1 font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-sky">
+            Interactive profile
           </div>
-          <h2 className="text-[1.8rem] font-medium tracking-tight text-neutral-100">
+          <h2 className="text-[1.8rem] font-semibold tracking-[-0.035em] text-neutral-100">
             {CHAT_TITLE}
           </h2>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-neutral-400">
@@ -202,12 +202,12 @@ function AskPanavChat() {
                   key={prompt}
                   type="button"
                   onClick={() => void submitMessage(prompt)}
-                  className="group flex w-full items-start gap-2 rounded-xl px-2 py-2 text-left transition-colors hover:bg-white/[0.04]"
+                  className="group flex min-h-11 w-full items-start gap-2 rounded-xl px-2 py-2 text-left transition-colors hover:bg-white/[0.035]"
                 >
-                  <span className="mt-[1px] text-sm text-neutral-600 transition-colors group-hover:text-neutral-400">
+                  <span className="mt-[1px] text-sm text-sky/60 transition-colors group-hover:text-sky">
                     ↳
                   </span>
-                  <span className="text-[15px] leading-relaxed text-neutral-400 transition-colors group-hover:text-neutral-200">
+                  <span className="text-sm leading-relaxed text-neutral-400 transition-colors group-hover:text-neutral-100">
                     {prompt}
                   </span>
                 </button>
@@ -217,13 +217,13 @@ function AskPanavChat() {
         </div>
 
         {(messages.length > 0 || sending) && (
-          <div className="max-h-[min(320px,50vh)] space-y-3 overflow-y-auto px-5 py-4 text-sm leading-relaxed sm:px-6">
+          <div className="max-h-[min(360px,50vh)] space-y-4 overflow-y-auto px-6 py-6 text-sm leading-relaxed sm:px-8">
             {messages.map((m, i) => (
               <div
                 key={i}
                 className={
                   m.role === "user"
-                    ? "ml-6 rounded-2xl border border-white/[0.08] bg-white/[0.06] px-3.5 py-2.5 text-neutral-200"
+                    ? "ml-6 rounded-2xl border border-white/[0.08] bg-white/[0.055] px-3.5 py-2.5 text-neutral-200"
                     : "mr-6 text-neutral-400"
                 }
               >
@@ -237,14 +237,14 @@ function AskPanavChat() {
           </div>
         )}
 
-        <div className="flex gap-2 border-t border-white/[0.06] p-3">
+        <div className="flex gap-2 border-t border-white/[0.07] p-3">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && !e.shiftKey && (e.preventDefault(), send())}
             placeholder="Ask about a project, research thread, internship, or idea…"
-            className="min-w-0 flex-1 rounded-lg border border-white/10 bg-[#0a0a0a]/80 px-3 py-2 text-sm text-neutral-100 placeholder-neutral-600 outline-none focus:border-white/20 cursor-auto"
+            className="min-h-11 min-w-0 flex-1 rounded-lg border border-white/10 bg-ink/80 px-3 py-2 text-sm text-neutral-100 placeholder-neutral-600 outline-none transition-colors focus:border-sky/40 cursor-auto"
             disabled={sending}
             aria-label="Chat message"
           />
@@ -252,7 +252,7 @@ function AskPanavChat() {
             type="button"
             onClick={send}
             disabled={sending || !input.trim()}
-            className="shrink-0 rounded-lg bg-neutral-100 px-4 py-2 text-sm font-medium text-neutral-900 hover:bg-white disabled:opacity-40 cursor-auto"
+            className="min-h-11 shrink-0 rounded-lg bg-neutral-100 px-4 py-2 text-sm font-medium text-neutral-900 transition-colors hover:bg-sky disabled:opacity-40 cursor-auto"
           >
             Send
           </button>

@@ -63,56 +63,53 @@ const leadership: Role = {
 
 function RoleCard({ role }: { role: Role }) {
   return (
-    <div className="py-8">
+    <article className="group py-8">
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-        <h3 className="text-[15px] font-semibold text-neutral-100 tracking-tight">
-          {role.title} <span className="text-neutral-500 font-normal">· {role.org}</span>
+        <h3 className="text-[15px] font-semibold tracking-tight text-neutral-100">
+          {role.title}{" "}
+          <span className="font-normal text-neutral-500">· {role.org}</span>
         </h3>
-        <span className="text-xs text-neutral-600 whitespace-nowrap tabular-nums">
+        <span className="whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.08em] text-neutral-600 tabular-nums">
           {role.date}
         </span>
       </div>
-      <p className="text-sm text-neutral-500 mt-0.5">{role.location}</p>
+      <p className="mt-0.5 text-sm text-neutral-500">{role.location}</p>
       <ul className="mt-4 space-y-2.5">
         {role.bullets.map((bullet, i) => (
-          <li key={i} className="flex gap-3 text-sm text-neutral-400 leading-relaxed">
-            <span className="mt-[7px] h-1 w-1 rounded-full bg-neutral-600 flex-shrink-0" />
+          <li key={i} className="flex gap-3 text-sm leading-relaxed text-neutral-400">
+            <span className="mt-[7px] h-1 w-1 flex-shrink-0 rounded-full bg-sky/70" />
             <span>{bullet}</span>
           </li>
         ))}
       </ul>
       {role.tags.length > 0 && (
-        <div className="flex flex-wrap gap-2 mt-4">
+        <div className="mt-4 flex flex-wrap gap-2">
           {role.tags.map((tag) => (
             <span
               key={tag}
-              className="text-[11px] px-2.5 py-1 rounded-md bg-white/[0.06] text-neutral-400 ring-1 ring-white/[0.06]"
+              className="rounded-md bg-white/[0.045] px-2.5 py-1 text-[11px] text-neutral-500 ring-1 ring-white/[0.06] transition-colors group-hover:text-neutral-400"
             >
               {tag}
             </span>
           ))}
         </div>
       )}
-    </div>
+    </article>
   );
 }
 
 function Experience() {
   return (
-    <section id="experience" className="pb-4 pt-10 scroll-mt-20">
-      <h2 className="text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-500 mb-2">
-        Experience
-      </h2>
-      <div className="divide-y divide-white/[0.06]">
+    <section id="experience" className="scroll-mt-20 pb-4 pt-10">
+      <h2 className="section-label mb-2">Experience</h2>
+      <div className="divide-y divide-white/[0.07]">
         {experience.map((role) => (
           <RoleCard key={role.org} role={role} />
         ))}
       </div>
 
       <div className="mt-16">
-        <h2 className="text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-500 mb-2">
-          Leadership
-        </h2>
+        <h2 className="section-label mb-2">Leadership</h2>
         <RoleCard role={leadership} />
       </div>
     </section>
