@@ -16,8 +16,8 @@ function ClickBurst() {
   return (
     <motion.svg
       viewBox="0 0 26 26"
-      className="absolute left-0 top-0 h-6 w-6 overflow-visible text-white"
-      initial={{ scale: 0.6, opacity: 0.55, x: -7, y: -7 }}
+      className="absolute left-0 top-0 h-5 w-5 overflow-visible text-white"
+      initial={{ scale: 0.6, opacity: 0.55, x: -5.5, y: -5.5 }}
       animate={{ scale: 1.08, opacity: 0 }}
       transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
       style={{
@@ -47,7 +47,7 @@ function PointerCursor({ clicking }: { clicking: boolean }) {
   return (
     <motion.svg
       viewBox="0 0 24 24"
-      className="block h-[1.72rem] w-[1.72rem] text-white"
+      className="block h-[1.35rem] w-[1.35rem] text-white"
       animate={{ scale: clicking ? 0.92 : 1 }}
       transition={{ type: "spring", stiffness: 620, damping: 34 }}
       style={{
@@ -183,7 +183,7 @@ function CursorFollower() {
     >
       <motion.div
         className="relative"
-        animate={{ x: -3.6, y: -3.6 }}
+        animate={{ x: -2.8, y: -2.8 }}
         transition={{ type: "spring", stiffness: 700, damping: 42 }}
       >
         <AnimatePresence mode="wait" initial={false}>
