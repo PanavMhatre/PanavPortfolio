@@ -15,6 +15,18 @@ const skills = [
   },
 ];
 
+const education = [
+  {
+    degree: "B.S. Computer Science",
+    coursework:
+      "Data Structures and Algorithms, Database Systems, Operating Systems, Computer Architecture",
+  },
+  {
+    degree: "B.S. Statistics and Data Science",
+    coursework: "Probability, Intro to Data Science",
+  },
+];
+
 const awards = [
   { title: "Goldman Sachs Software Emerging Leader", date: "2026" },
   { title: "MLH Hook 'Em Hacks, 1st Place", date: "2026" },
@@ -43,30 +55,33 @@ function Skills() {
 
       <div className="mt-16">
         <h2 className="section-label mb-2">Education</h2>
-        <div className="-mx-3 flex items-center rounded-lg px-3 py-5 transition-colors hover:bg-white/[0.025]">
-          <div className="mr-4 flex h-10 w-10 flex-shrink-0 items-center justify-center overflow-hidden rounded-md bg-[#BF5700] ring-1 ring-white/5">
-            <img
-              src={utaustinLogo}
-              alt="University of Texas at Austin"
-              className="h-full w-full object-contain p-1"
-            />
-          </div>
-          <div className="min-w-0 flex-1">
-            <h3 className="text-[15px] font-semibold tracking-tight text-neutral-100">
-              The University of Texas at Austin
-            </h3>
-            <p className="mt-0.5 text-sm text-neutral-500">
-              B.S. Computer Science &amp; B.S. Statistics and Data Science
-            </p>
-          </div>
-          <span className="ml-4 flex-shrink-0 font-mono text-[10px] uppercase tracking-[0.08em] text-neutral-600 tabular-nums">
-            May 2028
-          </span>
+        <div className="divide-y divide-white/[0.07]">
+          {education.map((entry) => (
+            <div key={entry.degree} className="py-5">
+              <div className="-mx-3 flex items-center rounded-lg px-3 transition-colors hover:bg-white/[0.025]">
+                <div className="mr-4 flex h-10 w-10 flex-shrink-0 items-center justify-center overflow-hidden rounded-md bg-[#BF5700] ring-1 ring-white/5">
+                  <img
+                    src={utaustinLogo}
+                    alt="University of Texas at Austin"
+                    className="h-full w-full object-contain p-1"
+                  />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-[15px] font-semibold tracking-tight text-neutral-100">
+                    The University of Texas at Austin
+                  </h3>
+                  <p className="mt-0.5 text-sm text-neutral-500">{entry.degree}</p>
+                </div>
+                <span className="ml-4 flex-shrink-0 font-mono text-[10px] uppercase tracking-[0.08em] text-neutral-600 tabular-nums">
+                  May 2028
+                </span>
+              </div>
+              <p className="mt-3 px-3 text-sm leading-relaxed text-neutral-500">
+                <span className="text-neutral-600">Coursework:</span> {entry.coursework}
+              </p>
+            </div>
+          ))}
         </div>
-        <p className="mt-3 px-3 text-sm leading-relaxed text-neutral-500">
-          <span className="text-neutral-600">Coursework:</span> Data Structures and
-          Algorithms, Database Systems, Operating Systems, Computer Architecture
-        </p>
       </div>
 
       <div className="mt-16">

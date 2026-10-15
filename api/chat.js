@@ -34,7 +34,7 @@ Awards and education:
 - Wells Fargo Scholarship Winner (2025).
 - Apple Swift Student Challenge Winner (2025).
 - USACO Gold.
-- B.S. Computer Science and B.S. Statistics & Data Science, The University of Texas at Austin (May 2028).
+- The University of Texas at Austin (May 2028): two separate degrees. B.S. Computer Science, coursework includes Data Structures and Algorithms, Database Systems, Operating Systems, Computer Architecture. B.S. Statistics and Data Science, coursework includes Probability, Intro to Data Science (more to be added later).
 
 Skills shown on the resume:
 - Languages: Java, Python, C, C++, SQL, TypeScript, JavaScript, Swift, Kotlin, R.
