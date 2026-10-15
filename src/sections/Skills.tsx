@@ -64,10 +64,6 @@ function Skills() {
           </span>
         </div>
         <p className="mt-3 px-3 text-sm leading-relaxed text-neutral-500">
-          <span className="text-neutral-600">Organizations:</span> ColorStack, UT ACM,
-          Management Leadership for Tomorrow, CodePath, UT Genesis
-        </p>
-        <p className="mt-2 px-3 text-sm leading-relaxed text-neutral-500">
           <span className="text-neutral-600">Coursework:</span> Data Structures and
           Algorithms, Database Systems, Operating Systems, Computer Architecture
         </p>

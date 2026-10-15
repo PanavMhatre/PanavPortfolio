@@ -34,7 +34,7 @@ Awards and education:
 - Wells Fargo Scholarship Winner (2025).
 - Apple Swift Student Challenge Winner (2025).
 - USACO Gold.
-- B.S. Computer Science and B.S. Statistics & Data Science, The University of Texas at Austin (May 2028). Organizations: ColorStack, UT ACM (Operational Officer), Management Leadership for Tomorrow, CodePath, UT Genesis.
+- B.S. Computer Science and B.S. Statistics & Data Science, The University of Texas at Austin (May 2028).
 
 Skills shown on the resume:
 - Languages: Java, Python, C, C++, SQL, TypeScript, JavaScript, Swift, Kotlin, R.
